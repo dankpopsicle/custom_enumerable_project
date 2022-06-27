@@ -1,10 +1,8 @@
 module Enumerable
 
   def my_each
-    i = 0
-    while i < self.length
-      yield self[i]
-      i += 1
+    for num in self do
+      yield num
     end
     self
   end
