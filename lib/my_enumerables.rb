@@ -1,17 +1,21 @@
 module Enumerable
-  def my_all?
+
+  def my_each
     i = 0
     while i < self.length
       yield self[i]
-      if (yield self[i]) == false
+      i += 1
+    end
+    self
+  end
+
+  def my_all?
+    my_each do |x|
+      if (yield x) == false
         return false
-        i = self.length
-      elsif i == (self.length - 1) && (yield self[i]) == true
-        return true
-      else 
-        i += 1
       end
     end
+    return true
   end
 end
 
